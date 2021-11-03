@@ -9,7 +9,8 @@ export default [
         component:Home
     },
     {
-        path:'/search',
+        name:'search',
+        path:'/search/:keyword?',//?代表一个或0个
         component:Search
     },
     {
