@@ -56,7 +56,7 @@
 </template>
 <script>
 export default {
-  name: "Home",
+  name: "Header",
   data() {
     return {
       keyword: "",
@@ -78,8 +78,12 @@ export default {
           keyword: this.keyword.toUpperCase()
         };
       }
-
-      this.$router.push(location);
+      //方法3,router里重写push
+      this.$router.push(location)
+      // //方法1:传入成功的回调函数函数
+      // this.$router.push(location,()=>{})
+      // //方法2:catch处理错误promise
+      // this.$router.push(location).catch(()=>{})
     },
   },
 };

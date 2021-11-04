@@ -2,7 +2,9 @@
   <div>
     <Header></Header>
     <router-view></router-view>
-    <Footer></Footer>
+    <!-- 部分页面 底部不显示 -->
+    <!-- <Footer v-show="$route.path"></Footer> -->
+    <Footer v-show="!$route.meta.isHideFooter"></Footer>
   </div>
 </template>
 

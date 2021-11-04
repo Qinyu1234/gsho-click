@@ -33,8 +33,10 @@
 		//git push origin :oldbranch
 		//3.将本地重命名的分支提交到仓库
 		//git push origin newbranch
+    //更新内容到本地
     
 //多分支操作
     // git checkout -b atguigu 本地创建新分支
     // git checkout -b atguigu origin/atguigu 根据远程分支创建本地分支
+    // git chechout aaa 切换分支aaa
     // git push -u origin atguigu

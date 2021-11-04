@@ -14,11 +14,19 @@ export default [
         component:Search
     },
     {
+        name:'register',
         path:'/register',
-        component:Register
+        component:Register,
+        meta:{
+            isHideFooter:true
+        }
     },
     {
+        name:'login',
         path:'/login',
-        component:Login
+        component:Login,
+        meta:{
+            isHideFooter:true
+        }
     },
 ]
