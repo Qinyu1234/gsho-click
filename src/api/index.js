@@ -7,7 +7,7 @@
 import ajax from './ajax'
 //首页三级分类
 // /api/product/getBaseCategoryList
-export function getCategoryList(){
+export function reqCategoryList(){
     //return ajax.get('/api/product/getBaseCategoryList')
     // return ajax('/api/product/getBaseCategoryList')
     return ajax({

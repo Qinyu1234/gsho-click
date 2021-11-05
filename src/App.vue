@@ -15,12 +15,15 @@ import Footer from '@/components/Footer'
 
 export default {
   name: 'App',
-  // mounted(){
-  //   //测试异步获取三级分类列表
-  //   getCategoryList().then(result =>{
-  //       console.log(result)
-  //   })
-  // },
+  mounted(){
+    //测试异步获取三级分类列表
+    // getCategoryList().then(result =>{
+    //     console.log(result)
+    // })
+
+    //分发请求获取分类列表的异步action 
+    this.$store.dispatch('getCategoryList')
+  },
   components: {
     Header,
     Footer

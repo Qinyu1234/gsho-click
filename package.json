@@ -24,6 +24,7 @@
     "less-loader": "^5.0.0",
     "lodash": "^4.17.20",
     "nprogress": "^0.2.0",
+    "store": "^2.0.12",
     "vue-router": "^3.5.3",
     "vue-template-compiler": "^2.6.11"
   },
@@ -39,7 +40,10 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "rules": {
+      "no-unused-vars": "off",
+      "vue/no-unused-vars":"off"
+    }
   },
   "browserslist": [
     "> 1%",
