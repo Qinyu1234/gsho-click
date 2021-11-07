@@ -51,3 +51,34 @@ const { mapState } = require("vuex")
         //只用绑定一个点击监听了
         //问题:不知道点击的是那个分类项 data(标签的自定义属性)
             //:data-xxx="" 然后从event.target.dataset里取xxx的值
+7,轮播
+    //npm i swiper@5 vue-awesome-swiper
+8,页面加载后执行
+    //vm.$nextTick( [callback] )
+    //将回调延迟到下次 DOM 更新循环之后执行。在修改数据之后立即使用它，然后等待 DOM 更新。
+    new Vue({
+        methods: {
+            example: function () {
+                // 修改数据
+                this.message = 'changed'
+                // DOM 还没有更新
+                this.$nextTick(function () {
+                    // DOM 现在更新了
+                    // `this` 绑定到当前实例
+                    this.doSomethingElse()
+                })
+            }
+        }
+    })
+
+
+
+
+
+
+    
+git网页打开太慢
+    // #speed up git
+    // 140.82.113.3 github.com
+    // 199.232.69.194 github.global-ssl.fastly.Net
+    // 195.199.108.153 assets-cdn.github.com

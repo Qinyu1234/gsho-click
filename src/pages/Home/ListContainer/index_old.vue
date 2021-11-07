@@ -3,25 +3,28 @@
     <div class="sortList clearfix">
       <div class="center">
         <!--banner轮播-->
-        <template>
-          <swiper :options="swiperOptions">
-            <swiper-slide>
+        <div class="swiper-container" ref="swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
               <img src="./images/banner1.jpg" />
-            </swiper-slide>
-            <swiper-slide>
+            </div>
+            <div class="swiper-slide">
               <img src="./images/banner2.jpg" />
-            </swiper-slide>
-            <swiper-slide>
+            </div>
+            <div class="swiper-slide">
               <img src="./images/banner3.jpg" />
-            </swiper-slide>
-            <swiper-slide>
+            </div>
+            <div class="swiper-slide">
               <img src="./images/banner4.jpg" />
-            </swiper-slide>
-            <div class="swiper-pagination" slot="pagination"></div>
-            <div class="swiper-button-prev" slot="button-prev"></div>
-            <div class="swiper-button-next" slot="button-next"></div>
-          </swiper>
-        </template>
+            </div>
+          </div>
+          <!-- 如果需要分页器 -->
+          <div class="swiper-pagination"></div>
+
+          <!-- 如果需要导航按钮 -->
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
       </div>
       <div class="right">
         <div class="news">
@@ -101,9 +104,17 @@ import { mapState } from "vuex";
 
 export default {
   name: "ListContainer",
-  data(){
-    return{
-      swiperOptions:{
+  mounted() {},
+  computed: {
+    ...mapState({
+      bannerList: (state) => state.home.bannerList,
+    }),
+  },
+  watch: {
+    bannerList() {
+      this.$$nextTick(() => {
+        //new Swiper ('.swiper-container', { //影响到其他的轮播效果
+        new Swiper(this.$refs.swiper, {
           //direction: 'vertical', // 默认水平
           loop: true, // 循环模式选项
           autoplay: {
@@ -121,14 +132,9 @@ export default {
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev",
           },
-        }
-    }
-  },
-  mounted() {},
-  computed: {
-    ...mapState({
-      bannerList: (state) => state.home.bannerList,
-    }),
+        });
+      });
+    },
   },
 };
 </script>

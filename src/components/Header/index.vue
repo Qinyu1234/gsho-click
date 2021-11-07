@@ -67,15 +67,13 @@ export default {
       //编程时路由导航
       //   this.$router.push(`/search/${this.keyword}`)
       const location = {
-        name: 'search'
+        name: 'search',
+        query:this.$route.query
       }
       //只有有数据时,才带params参数
       if (this.keyword) {
         location.params = {
           keyword: this.keyword
-        };
-        location.query = {
-          keyword: this.keyword.toUpperCase()
         };
       }
       //方法3,router里重写push

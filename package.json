@@ -10,6 +10,7 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
+    "vue-awesome-swiper": "^4.1.1",
     "vuex": "^3.6.2"
   },
   "devDependencies": {
@@ -20,11 +21,12 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
-    "less": "^4.1.2",
+    "less": "^3.13.1",
     "less-loader": "^5.0.0",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "nprogress": "^0.2.0",
     "store": "^2.0.12",
+    "swiper": "^5.4.5",
     "vue-router": "^3.5.3",
     "vue-template-compiler": "^2.6.11"
   },
@@ -42,7 +44,7 @@
     },
     "rules": {
       "no-unused-vars": "off",
-      "vue/no-unused-vars":"off"
+      "vue/no-unused-vars": "off"
     }
   },
   "browserslist": [
