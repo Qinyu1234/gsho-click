@@ -1,5 +1,3 @@
-const { mapState } = require("vuex")
-
 1,路由重复跳转错误
     相同参数&相同的路由,重复点击会提示
         //vue-router.esm.js:2066 Uncaught (in promise) NavigationDuplicated: 
@@ -76,9 +74,28 @@ const { mapState } = require("vuex")
 
 
 
-    
+
 git网页打开太慢
     // #speed up git
     // 140.82.113.3 github.com
     // 199.232.69.194 github.global-ssl.fastly.Net
     // 195.199.108.153 assets-cdn.github.com
+
+项目结构
+    -public
+        --css
+        --images
+        --indexe
+    -src
+        --components
+            --Headers.vue
+            --Footer.vue
+            --TypeNav.vue
+        --pages
+        --api
+        --store
+        --router
+        --app.vue
+        --main.js
+
+
