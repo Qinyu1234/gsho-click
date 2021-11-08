@@ -5,7 +5,7 @@
         <TodayRecommend/>
         <Rank/>
         <Like/>
-        <Floor/>
+        <Floor v-for="floor in floorList" :key="floor.id" :floor="floor"/>
         <Brand/>
     </div>
 </template>
@@ -16,6 +16,7 @@ import Brand from "./Brand";
 import Floor from "./Floor";
 import Like from "./Like";
 import Rank from "./Rank";
+import { mapState } from 'vuex';
 
 /*
     1,dispatch()触发请求的异步action调用 ==>数据从后台接口请求到vuex的state中
@@ -32,6 +33,17 @@ import Rank from "./Rank";
             Floor,
             Like,
             Rank
+        },
+        computed:{
+            ...mapState({
+                floorList:state => state.home.floorList,
+            })
+        },
+        mounted(){
+            this.$store.dispatch('getReqCommendList')
+            this.$store.dispatch('getFloorList')
+            this.$store.dispatch('getFloorList')
+            this.$store.dispatch('getBannerList')
         }
     }
 </script>

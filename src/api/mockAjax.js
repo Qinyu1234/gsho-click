@@ -11,7 +11,7 @@ import 'nprogress/nprogress.css'
 
 // 1,通配通用的基础路径和超时
 const service = axios.create({
-    baseURL:'http://39.99.186.36/api', //基础路径
+    baseURL:'/mock', //基础路径
     timeout:2000,
 
 })

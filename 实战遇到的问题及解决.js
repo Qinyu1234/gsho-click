@@ -1,3 +1,5 @@
+const { mock } = require("mockjs")
+
 1,路由重复跳转错误
     相同参数&相同的路由,重复点击会提示
         //vue-router.esm.js:2066 Uncaught (in promise) NavigationDuplicated: 
@@ -68,7 +70,8 @@
             }
         }
     })
-
+9,mock接口
+    不会发请求(浏览器中network没记录),被拦截了
 
 
 

@@ -1,20 +1,17 @@
-/* 
-利用mockjs来mock数据接口
+
+/*
+ 利用mockjs提供mock接口
 */
-import Mock from 'mockjs'
-import banners from './banners.json'
-import floors from './floors.json'
+import Mock from 'mockjs'
+import recommends from './recommends.json'
+import floors from './floors.json'
+import navtype from './navtype.json'
+import banners from './banners.json'
 
-// 提供广告位轮播数据的接口
-Mock.mock('/mock/banners',{
-    code: 200,
-    data: banners
-})
+//mock不需要暴露对象
 
-// 提供所有楼层数据的接口
-Mock.mock('/mock/floors',{
-    code: 200,
-    data: floors
-})
-
-console.log('mockServer...')
+Mock.mock('/mock/recommends',{code:200,data:recommends})
+Mock.mock('/mock/floors',{code:200,data:floors})
+Mock.mock('/mock/categoryList',{code:200,data:navtype})
+Mock.mock('/mock/bannerList',{code:200,data:banners})
+console.log("MockServer")

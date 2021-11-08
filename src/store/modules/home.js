@@ -5,9 +5,12 @@
 //import { reqBannerList } from "@/api"
 
 //import {reqCategoryList} from "@/api";
+import {reqRecommends,reqFloors,reqCategoryList,reqBannerList} from "@/api";
 const state = {
     categoryList:[],
     bannerList:[],
+    recommendList:[],
+    floorList:[]
 }
 const mutations = {
     RECEIVE_CATEGORY_LIST(state,categoryArr){
@@ -16,70 +19,20 @@ const mutations = {
     RECEIVE_BANNER_LIST(state,bannerArr){
         state.bannerList = bannerArr
     },
+    RECEIVE_RECOMMEND_LIST(state,recommendArr){
+        state.recommendList = recommendArr
+    },
+    RECEIVE_FLOOR_LIST(state,floorArr){
+        state.floorList = floorArr
+    },
 }
 const actions = {
     /*
     获取三级分类的异步action*/
     async getCategoryList({commit}){
             //发异步ajax请求(调用接口请求函数)
-        //const result0 = await reqCategoryList()
+        const result = await reqCategoryList()
             //如果请求成功了,得到数据提交mutation
-        const result = {
-            "code": 200,
-            "message": "成功",
-            "data": [
-                {
-                    "categoryChild": [
-                        {
-                            "categoryChild": [
-                                {
-                                    "categoryName": "电子书1",
-                                    "categoryId": 1
-                                }
-                            ],
-                            "categoryName": "电子书刊1",
-                            "categoryId": 1
-                        }
-                    ],
-                    "categoryName": "图书、音像、电子书刊1",
-                    "categoryId": 1
-                },
-                {
-                    "categoryChild": [
-                        {
-                            "categoryChild": [
-                                {
-                                    "categoryName": "电子书2",
-                                    "categoryId": 1
-                                }
-                            ],
-                            "categoryName": "电子书刊2",
-                            "categoryId": 1
-                        }
-                    ],
-                    "categoryName": "图书、音像、电子书刊2",
-                    "categoryId": 2
-                },
-                {
-                    "categoryChild": [
-                        {
-                            "categoryChild": [
-                                {
-                                    "categoryName": "电子书3",
-                                    "categoryId": 1
-                                }
-                            ],
-                            "categoryName": "电子书刊3",
-                            "categoryId": 1
-                        }
-                    ],
-                    "categoryName": "图书、音像、电子书刊3",
-                    "categoryId": 3
-                }
-            ],
-            "ok": true
-        }
-
         if(result.code === 200){
             const categoryArr = result.data
             commit('RECEIVE_CATEGORY_LIST',categoryArr)
@@ -87,67 +40,31 @@ const actions = {
     },
     async getBannerList({commit}){
             //发异步ajax请求(调用接口请求函数)
-        //const result = await reqBannerList()
+        const result = await reqBannerList()
             //如果请求成功了,得到数据提交mutation
-        const result = {
-            "code": 200,
-            "message": "成功",
-            "data": [
-                {
-                    "categoryChild": [
-                        {
-                            "categoryChild": [
-                                {
-                                    "categoryName": "电子书1",
-                                    "categoryId": 1
-                                }
-                            ],
-                            "categoryName": "电子书刊1",
-                            "categoryId": 1
-                        }
-                    ],
-                    "categoryName": "图书、音像、电子书刊1",
-                    "categoryId": 1
-                },
-                {
-                    "categoryChild": [
-                        {
-                            "categoryChild": [
-                                {
-                                    "categoryName": "电子书2",
-                                    "categoryId": 1
-                                }
-                            ],
-                            "categoryName": "电子书刊2",
-                            "categoryId": 1
-                        }
-                    ],
-                    "categoryName": "图书、音像、电子书刊2",
-                    "categoryId": 2
-                },
-                {
-                    "categoryChild": [
-                        {
-                            "categoryChild": [
-                                {
-                                    "categoryName": "电子书3",
-                                    "categoryId": 1
-                                }
-                            ],
-                            "categoryName": "电子书刊3",
-                            "categoryId": 1
-                        }
-                    ],
-                    "categoryName": "图书、音像、电子书刊3",
-                    "categoryId": 3
-                }
-            ],
-            "ok": true
-        }
-
         if(result.code === 200){
             const bannerArr = result.data
             commit('RECEIVE_BANNER_LIST',bannerArr)
+        }
+    },
+    async getReqCommendList({commit}){
+        //发异步ajax请求(调用接口请求函数)
+        const result = await reqRecommends()
+            //如果请求成功了,得到数据提交mutation
+        
+        if(result.code === 200){
+            const recommendArr = result.data
+            commit('RECEIVE_RECOMMEND_LIST',recommendArr)
+        }
+    },
+    async getFloorList({commit}){
+        //发异步ajax请求(调用接口请求函数)
+        const result = await reqFloors()
+            //如果请求成功了,得到数据提交mutation
+        
+        if(result.code === 200){
+            const refloorArr = result.data
+            commit('RECEIVE_FLOOR_LIST',refloorArr)
         }
     },
 }

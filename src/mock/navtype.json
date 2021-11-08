@@ -1,0 +1,50 @@
+[
+    {
+        "categoryChild": [
+            {
+                "categoryChild": [
+                    {
+                        "categoryName": "电子书1",
+                        "categoryId": 1
+                    }
+                ],
+                "categoryName": "电子书刊1",
+                "categoryId": 1
+            }
+        ],
+        "categoryName": "图书、音像、电子书刊1",
+        "categoryId": 1
+    },
+    {
+        "categoryChild": [
+            {
+                "categoryChild": [
+                    {
+                        "categoryName": "电子书2",
+                        "categoryId": 1
+                    }
+                ],
+                "categoryName": "电子书刊2",
+                "categoryId": 1
+            }
+        ],
+        "categoryName": "图书、音像、电子书刊2",
+        "categoryId": 2
+    },
+    {
+        "categoryChild": [
+            {
+                "categoryChild": [
+                    {
+                        "categoryName": "电子书3",
+                        "categoryId": 1
+                    }
+                ],
+                "categoryName": "电子书刊3",
+                "categoryId": 1
+            }
+        ],
+        "categoryName": "图书、音像、电子书刊3",
+        "categoryId": 3
+    }
+]

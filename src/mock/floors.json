@@ -42,6 +42,10 @@
       {
         "id": "0012",
         "imageUrl": "/images/floor-1-b02.png"
+      },
+      {
+        "id": "0013",
+        "imageUrl": "/images/floor-1-b03.png"
       }
     ],
     "recommendList": [
@@ -57,7 +61,8 @@
     "name": "手机通讯",
     "keywords": ["节能补贴2", "4K电视2", "空气净化器2", "IH电饭煲2", "滚筒洗衣机2", "电热水器2"],
     "imgUrl": "/images/floor-1-1.png",
-    "navList": [{
+    "navList": [
+      {
         "url": "#",
         "text": "热门2"
       },
@@ -86,7 +91,65 @@
         "text": "高端电器2"
       }
     ],
-    "carouselList": [{
+    "carouselList": [
+      {
+        "id": "0011",
+        "imageUrl": "/images/floor-1-b01.png"
+      },
+      {
+        "id": "0012",
+        "imageUrl": "/images/floor-1-b02.png"
+      },
+      {
+        "id": "0013",
+        "imageUrl": "/images/floor-1-b03.png"
+      }
+    ],
+    "recommendList": [
+      "/images/floor-1-2.png",
+      "/images/floor-1-3.png",
+      "/images/floor-1-5.png",
+      "/images/floor-1-6.png"
+    ],
+    "bigImg": "/images/floor-1-4.png"
+  },
+  {
+    "id": "006",
+    "name": "手机通讯",
+    "keywords": ["节能补贴6", "4K电视6", "空气净化器6", "IH电饭煲6", "滚筒洗衣机6", "电热水器6"],
+    "imgUrl": "/images/floor-1-1.png",
+    "navList": [
+      {
+        "url": "#",
+        "text": "热门6"
+      },
+      {
+        "url": "#",
+        "text": "大家电6"
+      },
+      {
+        "url": "#",
+        "text": "生活电器6"
+      },
+      {
+        "url": "#",
+        "text": "厨房电器6"
+      },
+      {
+        "url": "#",
+        "text": "应季电器6"
+      },
+      {
+        "url": "#",
+        "text": "空气/净水6"
+      },
+      {
+        "url": "#",
+        "text": "高端电器6"
+      }
+    ],
+    "carouselList": [
+      {
         "id": "0011",
         "imageUrl": "/images/floor-1-b01.png"
       },

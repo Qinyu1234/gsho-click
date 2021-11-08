@@ -43,60 +43,15 @@
             <i class="list-item"></i>
             <span class="service-intro">话费</span>
           </li>
-          <li class="life-item">
-            <i class="list-item"></i>
-            <span class="service-intro">机票</span>
-          </li>
-          <li class="life-item">
-            <i class="list-item"></i>
-            <span class="service-intro">电影票</span>
-          </li>
-          <li class="life-item">
-            <i class="list-item"></i>
-            <span class="service-intro">游戏</span>
-          </li>
-          <li class="life-item">
-            <i class="list-item"></i>
-            <span class="service-intro">彩票</span>
-          </li>
-          <li class="life-item">
-            <i class="list-item"></i>
-            <span class="service-intro">加油站</span>
-          </li>
-          <li class="life-item">
-            <i class="list-item"></i>
-            <span class="service-intro">酒店</span>
-          </li>
-          <li class="life-item">
-            <i class="list-item"></i>
-            <span class="service-intro">火车票</span>
-          </li>
-          <li class="life-item">
-            <i class="list-item"></i>
-            <span class="service-intro">众筹</span>
-          </li>
-          <li class="life-item">
-            <i class="list-item"></i>
-            <span class="service-intro">理财</span>
-          </li>
-          <li class="life-item">
-            <i class="list-item"></i>
-            <span class="service-intro">礼品卡</span>
-          </li>
-          <li class="life-item">
-            <i class="list-item"></i>
-            <span class="service-intro">白条</span>
-          </li>
         </ul>
         <div class="ads">
-          <img src="./images/ad1.png" />
+          <!-- <img :src="bannerList[0].adimgUrl" /> -->
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-import Swiper from "swiper";
 import { mapState } from "vuex";
 
 export default {
@@ -124,10 +79,9 @@ export default {
         }
     }
   },
-  mounted() {},
   computed: {
     ...mapState({
-      bannerList: (state) => state.home.bannerList,
+      bannerList: state => state.home.bannerList
     }),
   },
 };
