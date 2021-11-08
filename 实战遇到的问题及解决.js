@@ -73,6 +73,10 @@ const { mock } = require("mockjs")
 9,mock接口
     不会发请求(浏览器中network没记录),被拦截了
 
+问题:
+    1,Object.xxx报错,但数据样式完整显示
+        //使用v-if处理一下
+
 
 
 

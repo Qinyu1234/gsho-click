@@ -4,18 +4,9 @@
       <div class="center">
         <!--banner轮播-->
         <template>
-          <swiper :options="swiperOptions">
-            <swiper-slide>
-              <img src="./images/banner1.jpg" />
-            </swiper-slide>
-            <swiper-slide>
-              <img src="./images/banner2.jpg" />
-            </swiper-slide>
-            <swiper-slide>
-              <img src="./images/banner3.jpg" />
-            </swiper-slide>
-            <swiper-slide>
-              <img src="./images/banner4.jpg" />
+          <swiper :options="swiperOptions" v-if="bannerList">
+            <swiper-slide v-for="item in bannerList.imgsUrl" :key="item">
+              <img :src="item" />
             </swiper-slide>
             <div class="swiper-pagination" slot="pagination"></div>
             <div class="swiper-button-prev" slot="button-prev"></div>
@@ -30,22 +21,21 @@
             <span class="fr tip">更多 ></span>
           </h4>
           <div class="clearix"></div>
-          <ul class="news-list unstyled">
-            <li><span class="bold">[特惠]</span>备战开学季 全民半价购数码</li>
-            <li><span class="bold">[公告]</span>备战开学季 全民半价购数码</li>
-            <li><span class="bold">[特惠]</span>备战开学季 全民半价购数码</li>
-            <li><span class="bold">[公告]</span>备战开学季 全民半价购数码</li>
-            <li><span class="bold">[特惠]</span>备战开学季 全民半价购数码</li>
+          <ul class="news-list unstyled" v-if="bannerList">
+            <li v-for="item in bannerList.ad" :key="item.id">
+              <span class="bold">{{item.title}}</span>
+              {{item.text}}
+            </li>
           </ul>
         </div>
-        <ul class="lifeservices">
-          <li class="life-item">
+        <ul class="lifeservices" v-if="bannerList">
+          <li class="life-item" v-for="item in bannerList.name" :key="item">
             <i class="list-item"></i>
             <span class="service-intro">话费</span>
           </li>
         </ul>
-        <div class="ads">
-          <!-- <img :src="bannerList[0].adimgUrl" /> -->
+        <div class="ads" v-if="bannerList">
+          <img :src="bannerList.adimgUrl" />
         </div>
       </div>
     </div>
@@ -56,6 +46,9 @@ import { mapState } from "vuex";
 
 export default {
   name: "ListContainer",
+  props:{
+    bannerList:Object
+  },
   data(){
     return{
       swiperOptions:{
@@ -76,14 +69,10 @@ export default {
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev",
           },
-        }
+        },
     }
   },
-  computed: {
-    ...mapState({
-      bannerList: state => state.home.bannerList
-    }),
-  },
+  
 };
 </script>
 <style lang="less" scoped>

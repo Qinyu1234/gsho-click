@@ -1,7 +1,7 @@
 <template>
     <div>
         <TypeNav/>
-        <ListContainer/>
+        <ListContainer :bannerList="bannerList[0]"/>
         <TodayRecommend/>
         <Rank/>
         <Like/>
@@ -37,7 +37,8 @@ import { mapState } from 'vuex';
         computed:{
             ...mapState({
                 floorList:state => state.home.floorList,
-            })
+                bannerList: state => state.home.bannerList
+            }),
         },
         mounted(){
             this.$store.dispatch('getReqCommendList')

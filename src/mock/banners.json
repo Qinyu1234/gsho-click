@@ -1,45 +1,39 @@
-[{
-  "ad":[
-    {
-      "title":"[特惠]",
-      "text":"备战开学季 全民半价购数码"
-    },
-    {
-      "title":"[公告]",
-      "text":"备战开学季 全民半价购数码"
-    },
-    {
-      "title":"[特惠]",
-      "text":"备战开学季 全民半价购数码"
-    },
-    {
-      "title":"[公告]",
-      "text":"备战开学季 全民半价购数码"
-    },
-    {
-      "title":"[特惠]",
-      "text":"备战开学季 全民半价购数码"
-    }
-  ],
-  "name":["话费","机票","电影票","游戏","彩票","加油站","酒店","火车票","众筹","理财","礼品卡","白条"],
-  "imgsUrl":[
-    {
-      "id": "1",
-      "imgUrl": "/images/banner1.jpg"
-    },
-    {
-      "id": "2",
-      "imgUrl": "/images/banner2.jpg"
-    },
-    {
-      "id": "3",
-      "imgUrl": "/images/banner3.jpg"
-    },
-    {
-      "id": "4",
-      "imgUrl": "/images/banner4.jpg"
-    }
-  ],
-  "adimgUrl":"/images/ad1.png"
-}
+[
+  { 
+    "ad":[
+      {
+        "id":"01",
+        "title":"[特惠]",
+        "text":"备战开学季 全民半价购数码"
+      },
+      {
+        "id":"02",
+        "title":"[公告]",
+        "text":"备战开学季 全民半价购数码"
+      },
+      {
+        "id":"03",
+        "title":"[特惠]",
+        "text":"备战开学季 全民半价购数码"
+      },
+      {
+        "id":"04",
+        "title":"[公告]",
+        "text":"备战开学季 全民半价购数码"
+      },
+      {
+        "id":"05",
+        "title":"[特惠]",
+        "text":"备战开学季 全民半价购数码"
+      }
+    ],
+    "name":["话费","机票","电影票","游戏","彩票","加油站","酒店","火车票","众筹","理财","礼品卡","白条"],
+    "imgsUrl":[
+        "/images/banner1.jpg",
+        "/images/banner2.jpg",
+        "/images/banner3.jpg",
+        "/images/banner4.jpg"
+      ],
+    "adimgUrl":"/images/ad1.png"
+  }
 ]
