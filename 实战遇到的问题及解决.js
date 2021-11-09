@@ -79,6 +79,13 @@ const { mock } = require("mockjs")
         //分类搜索category1Id category2Id category3Id
     //2,初始化搜索
         //在created中搜集参数数据,并发请求
+11,search代码优化
+    //原因:
+        // mounted 执行更新数据然后发请求
+        // watch   更新数据法请求
+    // 将之合并
+        //watch:immediate:true 初始化后就立即执行1次
+
 方法,
     startsWith //字符串是否已xxx开始
     let Str = "www.runoob.com"

@@ -18,26 +18,29 @@
               <i @click="deleteKeyword">×</i>
             </li>
             
-            <!-- <li class="with-x" v-if="options.trademark" @click="deleteTrademark">{{options.trademark}}<i>×</i></li>
-            <li class="with-x" v-for="(prop, index) in options.props" :key="prop" @click="deleteProp(index)">{{prop}}<i>×</i></li> -->
+            <li class="with-x" v-if="options.trademark" @click="deleteTrademark">{{options.trademark}}<i>×</i></li>
+            <li class="with-x" v-for="(prop, index) in options.props" :key="prop" >{{prop}}
+              <i @click="deleteProp(index)">×</i>
+            </li>
           </ul>
         </div>
 
         <!--selector-->
-        <SearchSelector />
+        <SearchSelector :setTrademark="setTrademark" @addProp="addProp"/>
+        <!-- <SearchSelector :setTrademark="setTrademark" :addProp="addProp"/> -->
 
         <!--details-->
         <div class="details clearfix">
           <div class="sui-navbar">
             <div class="navbar-inner filter">
               <ul class="sui-nav">
-                <!-- <li :class="{active: isActive('1')}">
+                <li :class="{active: isActive('1')}">
                   <a href="javascript:" @click="setOrder('1')">
                     综合
                     <i class="iconfont" v-if="isActive('1')"
                       :class="iconClass"></i>
                   </a>
-                </li> -->
+                </li>
                 <li>
                   <a href="#">销量</a>
                 </li>
@@ -47,13 +50,14 @@
                 <li>
                   <a href="#">评价</a>
                 </li>
-                <!-- <li :class="{active: isActive('2')}">
+                <li :class="{active: isActive('2')}">
                   <a href="javascript:" @click="setOrder('2')">
                     价格
                      <i class="iconfont" v-if="isActive('2')"
-                      :class="iconClass"></i>
+                      :class="iconClass"
+                      ></i>
                   </a>
-                </li> -->
+                </li>
               </ul>
             </div>
           </div>
@@ -147,10 +151,10 @@ import { mapGetters } from 'vuex'
           }
       }
     },
-    created(){
-      this.updateParam()
-      this.getSearchList()
-    },
+    // created(){
+    //   this.updateParam()
+    //   this.getSearchList()
+    // },
     computed:{
       // ...mapState({
       //   goodsList:state => state.search.searchList.goodsList
@@ -163,10 +167,18 @@ import { mapGetters } from 'vuex'
       }
     },
     watch:{
-      $route(to, from) {
-      // 对路由变化作出响应...
-      this.updateParam()
-      this.getSearchList()
+      // $route(to, from) {
+      //   // 对路由变化作出响应...
+      //   this.updateParam()
+      //   this.getSearchList()
+      // }
+      $route:{
+        handler(){
+          // 对路由变化作出响应...
+          this.updateParam()
+          this.getSearchList()
+        },
+        immediate:true
       }
     },
     components: {
@@ -217,14 +229,32 @@ import { mapGetters } from 'vuex'
             params: this.$route.params
           })
         },
-
-        
-
+        //设置指定品牌
+        setTrademark (trademark) {  // 品牌ID:品牌名称
+          if (this.options.trademark===trademark) return
+          this.options.trademark = trademark
+          this.getSearchList()
+        }, 
+        //删除品牌条件
+        deleteTrademark () {
+          this.options.trademark = ''
+          this.getSearchList()
+        },
+        //添加属性值
+        addProp(prop){
+          const {props} = this.options
+          if(props.includes(prop)) return
+          this.options.props.push(prop)
+          this.getSearchList()
+        },
+         deleteProp(index){
+           this.options.props.splice(index,1)
+           this.getSearchList()
+         },
         //是否选中
         isActive (orderFlag) {
           return this.options.order.startsWith(orderFlag)
         },
-
         //设置排序条件
         setOrder (orderFlag) { // '1' / '2'    1:desc
           // 得到原本的order中的orderFlag, orderType
@@ -240,28 +270,6 @@ import { mapGetters } from 'vuex'
           // 更新order
           this.options.order = `${orderFlag}:${orderType}`
           this.getSearchList()
-        },
-
-        //删除品牌条件
-        deleteTrademark () {
-          this.options.trademark = ''
-          this.getSearchList()
-        },
-
-        //设置指定品牌
-        setTrademark (trademark) {  // 品牌ID:品牌名称
-          if (this.options.trademark===trademark) return
-          this.options.trademark = trademark
-          this.getSearchList()
-        },
-
-
-        //异步获取指定页码的商品列表显示
-        getSearchList (page=1) {
-          // 更新pageNo
-          this.options.pageNo = page
-          // 请求获取数据
-          this.$store.dispatch('getSearchList',this.options)
         },
 
     }
