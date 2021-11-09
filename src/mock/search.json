@@ -1,0 +1,133 @@
+{
+    "trademarkList": [
+        {
+            "tmId": 1,
+            "tmName": "苹果"
+        },
+        {
+            "tmId": 2,
+            "tmName": "小米"
+        },
+        {
+            "tmId": 3,
+            "tmName": "华为"
+        },
+        {
+            "tmId": 4,
+            "tmName": "苹果1"
+        },
+        {
+            "tmId": 5,
+            "tmName": "小米1"
+        },
+        {
+            "tmId": 6,
+            "tmName": "华为1"
+        },
+        {
+            "tmId": 7,
+            "tmName": "苹果2"
+        },
+        {
+            "tmId": 8,
+            "tmName": "小米2"
+        },
+        {
+            "tmId": 9,
+            "tmName": "华为2"
+        },
+        {
+            "tmId": 10,
+            "tmName": "苹果3"
+        },
+        {
+            "tmId": 11,
+            "tmName": "小米3"
+        },
+        {
+            "tmId": 12,
+            "tmName": "华为3"
+        }
+    ],
+    "attrsList": [
+        {
+            "attrId": 1,
+            "attrValueList": [
+                "GSM（移动/联通2G）",
+                "电信2G",
+                "电信3G",
+                "移动3G",
+                "联通3G",
+                "联通4G",
+                "电信3G",
+                "移动3G",
+                "联通3G",
+                "联通4G"
+            ],
+            "attrName": "网络制式"
+        },
+        {
+            "attrId": 2,
+            "attrValueList": [
+                "4500-11999",
+                "2800-4499",
+                "1800-2799",
+                "0-1799"
+            ],
+            "attrName": "价格"
+        },
+        {
+            "attrId": 3,
+            "attrValueList": [
+                "4.0-4.9英寸",
+                "4.0-4.9英寸"
+            ],
+            "attrName": "显示屏尺寸"
+        },
+        {
+            "attrId": 4,
+            "attrValueList": [
+                "1200万以上",
+                "800-1199万",
+                "1200-1599万",
+                "1600万以上",
+                "无摄像头"
+            ],
+            "attrName": "摄像头像素"
+        },
+        {
+            "attrId": 5,
+            "attrValueList": [
+                "特点",
+                "系统",
+                "手机内存",
+                "单卡双卡",
+                "其他"
+            ],
+            "attrName": "更多筛选项"
+        }
+    ],
+    "goodsList": [
+        {
+            "id": 2,
+            "defaultImg": "http://192.168.200.128:8080/xxx.jpg",
+            "title": "Apple iPhone 11 (A2223)",
+            "price": 5499,
+            "createTime": null,
+            "tmId": null,
+            "tmName": null,
+            "category1Id": null,
+            "category1Name": null,
+            "category2Id": null,
+            "category2Name": null,
+            "category3Id": null,
+            "category3Name": null,
+            "hotScore": 0,
+            "attrs": null
+        }
+    ],
+    "total": 8,
+    "pageSize": 2,
+    "pageNo": 1,
+    "totalPages": 4
+}

@@ -67,22 +67,39 @@ export default {
       //编程时路由导航
       //   this.$router.push(`/search/${this.keyword}`)
       const location = {
-        name: 'search',
-        query:this.$route.query
-      }
+        name: "search",
+        query: this.$route.query,
+      };
       //只有有数据时,才带params参数
       if (this.keyword) {
         location.params = {
-          keyword: this.keyword
+          keyword: this.keyword,
         };
       }
       //方法3,router里重写push
-      this.$router.push(location)
+
+      // 从其他页到搜索:push()
+      // 从搜索到搜索页:replace()
+      if (this.$route.name === "search") {
+        this.$router.replace(location);
+      } else {
+        this.$router.push(location);
+      }
+
       // //方法1:传入成功的回调函数函数
       // this.$router.push(location,()=>{})
       // //方法2:catch处理错误promise
       // this.$router.push(location).catch(()=>{})
     },
+  },
+  mounted() {
+    // 给总线绑定自定义事件监听clearKeyword
+    this.$bus.$on("clearKeyword", () => {
+      this.keyword = "";
+    });
+  },
+  beforeDestory() {
+    this.$bus.off("clearKeyword");
   },
 };
 </script>

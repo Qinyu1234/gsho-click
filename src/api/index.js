@@ -27,3 +27,9 @@ export const reqBannerList = () => mockAjax('/bannerList')
 export const reqRecommends = ()=> mockAjax('/recommends')
 export const reqFloors = ()=> mockAjax('/floors')
 
+export const reqSearchList = (searchParams)=>mockAjax({
+    url:'/searchList',
+    mothod:'post',
+    searchParams
+})
+

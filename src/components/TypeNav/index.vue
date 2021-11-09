@@ -9,7 +9,7 @@
               <div class="item" :class="{active:currentIndex===index}" @mouseenter="showSubList(index)" v-for="(c1,index) in categoryList" :key="c1.categoryId">
                 <h3>
                   <!-- <a href="javascript:" @click="$router.push(`search?categoryName=${c1.categoryName}&categoryId=${c1.categoryId}`)">{{c1.categoryName}}</a> -->
-                  <a href="javascript:" :data-category1Name="c1.categoryName" :data-category1Id="c1.categoryId">{{c1.categoryName}}</a>
+                  <a href="javascript:" :data-categoryName="c1.categoryName" :data-category1Id="c1.categoryId">{{c1.categoryName}}</a>
                   <!-- <router-link :to="`search?categoryName=${c1.categoryName}&categoryId=${c1.categoryId}`">{{c1.categoryName}}</router-link> -->
                 </h3>
                 <div class="item-list clearfix">
@@ -17,12 +17,12 @@
                     <dl class="fore" v-for="c2 in c1.categoryChild" :key="c2.categoryId">
                       <dt>
                         <!-- <a href="javascript:" @clicl="$router.push(`search?categoryName=${c2.categoryName}&categoryId=${c2.categoryId}`)">{{c2.categoryName}}</a> -->
-                        <a href="javascript:" :data-category2Name="c2.categoryName" :data-category2Id="c2.categoryId">{{c2.categoryName}}</a>
+                        <a href="javascript:" :data-categoryName="c2.categoryName" :data-category2Id="c2.categoryId">{{c2.categoryName}}</a>
                         <!-- <router-link :to="`search?categoryName=${c2.categoryName}&categoryId=${c2.categoryId}`">{{c2.categoryName}}</router-link> -->
                       </dt>
                       <dd>
                         <em v-for="c3 in c2.categoryChild" :key="c3.categoryId">
-                          <a href="javascript:" :data-category3Name="c3.categoryName" :data-category3Id="c3.categoryId">{{c3.categoryName}}</a>
+                          <a href="javascript:" :data-categoryName="c3.categoryName" :data-category3Id="c3.categoryId">{{c3.categoryName}}</a>
                           <!-- <a href="javascript:" @clicl="$router.push(`search?categoryName=${c3.categoryName}&categoryId=${c3.categoryId}`)">{{c3.categoryName}}</a> -->
                           <!-- <router-link :to="`search?categoryName=${c3.categoryName}&categoryId=${c3.categoryId}`">{{c3.categoryName}}</router-link> -->
                         </em>
@@ -98,30 +98,31 @@ export default {
     toSearch(event){
       const target = event.target
       if(target.tagName.toUpperCase() ==='A'){
-        const {category1name,category1id,category2name,category2id,category3name,category3id,} = target.dataset
-        console.dir(target.dataset)
-        const query = {}
-        if(category1name){
-          query.category1Name=category1name
-        }else if(category2name){
-          query.category2Name = category2name       
-        }else if(category3name){
-          query.category3Name = category3name       
-        }
-        if(category1id){
-          query.category1Id = category1id
-        }else if(category2id){
-          query.category2Id = category2id       
-        }else if(category3id){
-          query.category3Id = category3id       
-        }
-        
-        this.$router.push({
+        const {categoryname,category1id,category2id,category3id,} = target.dataset
+
+        const location = {
           name:'search',
           params:this.$route.params,
-          query,
-          
-        })
+          query:{},
+        };
+        if(categoryname){
+          location.query.categoryName=categoryname
+        }else if(category1id){
+          location.query.category1Id = category1id
+        }else if(category2id){
+          location.query.category2Id = category2id       
+        }else if(category3id){
+          location.query.category3Id = category3id       
+        }
+        
+        // this.$router.push({
+        if(this.$route.name === "search"){
+          this.$router.replace(location)
+        }else{
+          this.$router.push(location)
+        }
+
+        this.hideFirst()
       }
     },
     //showSubList(){//这个事件监听回调函数调用的频率太高了

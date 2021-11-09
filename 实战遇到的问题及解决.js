@@ -1,3 +1,4 @@
+const { startsWith } = require("core-js/core/string")
 const { mock } = require("mockjs")
 
 1,路由重复跳转错误
@@ -72,13 +73,31 @@ const { mock } = require("mockjs")
     })
 9,mock接口
     不会发请求(浏览器中network没记录),被拦截了
-
+10,search插件里
+    //1,搜索条件
+        //关键字搜索 keyword
+        //分类搜索category1Id category2Id category3Id
+    //2,初始化搜索
+        //在created中搜集参数数据,并发请求
+方法,
+    startsWith //字符串是否已xxx开始
+    let Str = "www.runoob.com"
+    Str.startsWith("www") //true
 问题:
     1,Object.xxx报错,但数据样式完整显示
         //使用v-if处理一下
-
-
-
+    2,搜索页面添加别的搜索条件,不会再发请求
+        //原因,从搜索跳转到搜索,搜索组件对象不会重新创建,初始化的狗子不会重新发执行=> 不再发请求
+        //解决,监视路由参数的变化 watch:$store
+    3,删除分类数据和关键字条件,地址栏还有参数数据
+        //原因:删除时没有去处路径上的参数数据
+        //解决,重新跳转到当前search,不再携带删除的条件对应的参数
+    4,叉掉参数,搜索框中还有搜索信息
+        //解决,使用全局事件总线,叉掉参数时,删除搜索信息
+            //main里面全局绑定 beforeCreate(){Vue.prototype.$bus = this }
+            //this.$bus.$emit('xxx')
+            //this.$bus.$on('xxx',()={ sss = ''})
+        //注意,绑定后需要在Header组件销毁之前解绑事件监听beforeDestory
 
 
 
