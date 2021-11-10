@@ -347,16 +347,36 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex'
   import ImageList from './ImageList/ImageList'
   import Zoom from './Zoom/Zoom'
 
   export default {
     name: 'Detail',
-    
     components: {
       ImageList,
       Zoom
+    },
+    data(){
+      return{
+        skuId:''
+      }
+    },
+    beforeMount(){
+      this.skuId = this.$route.params.skuId
+    },
+    mounted(){
+      this.getSkuDetailInfo()
+    },
+    computed:{
+      ...mapGetters(['categoryView','skuInfo','spuSaleAttrList'])
+    },
+    methods:{
+      getSkuDetailInfo(){
+        this.$store.dispatch('getSkuDetailInfo',this.skuId)
+      }
     }
+
   }
 </script>
 

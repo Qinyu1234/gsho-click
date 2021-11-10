@@ -32,4 +32,6 @@ export const reqSearchList = (searchParams)=>mockAjax({
     mothod:'post',
     searchParams
 })
+//获取详情数据
+export const reqDetailInfo = (skuId)=>mockAjax('/detail/:skuId')
 

@@ -1,6 +1,7 @@
 const { startsWith } = require("core-js/core/string")
 const { options } = require("less")
 const { mock } = require("mockjs")
+const { mapGetters } = require("vuex")
 
 1,路由重复跳转错误
     相同参数&相同的路由,重复点击会提示
@@ -122,7 +123,9 @@ const { mock } = require("mockjs")
 
 
 
-
+    mapGetters :computed
+    mapActions :methods
+    mapState   :mounted  
 
 方法,
     startsWith //字符串是否已xxx开始
