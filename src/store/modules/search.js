@@ -15,6 +15,13 @@ const actions = {
     /*
     获取三级分类的异步action*/
     async getSearchList({commit},searchParams){
+        //不想删除search组件中的options中的属性
+        searchParams = {...searchParams} //浅拷贝,数组只拷贝引用
+        Object.keys(searchParams).forEach((item)=>{
+            if(searchParams[item] === "" || (Array.isArray(searchParams[item])&&searchParams[item].length ===0)){
+                delete searchParams[item]
+            }
+        })
             //发异步ajax请求(调用接口请求函数)
         console.log(JSON.stringify(searchParams))
         const result = await reqSearchList(searchParams)
@@ -33,6 +40,9 @@ const getters = {
     },
     attrsList(state){
         return state.searchList.attrsList || []
+    },
+    total(state){
+        return state.searchList.total || 0
     }
 }
 

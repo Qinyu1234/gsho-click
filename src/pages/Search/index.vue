@@ -92,35 +92,13 @@
               </li>
             </ul>
           </div>
-          <div class="fr page">
-            <div class="sui-pagination clearfix">
-              <ul>
-                <li class="prev disabled">
-                  <a href="#">«上一页</a>
-                </li>
-                <li class="active">
-                  <a href="#">1</a>
-                </li>
-                <li>
-                  <a href="#">2</a>
-                </li>
-                <li>
-                  <a href="#">3</a>
-                </li>
-                <li>
-                  <a href="#">4</a>
-                </li>
-                <li>
-                  <a href="#">5</a>
-                </li>
-                <li class="dotted"><span>...</span></li>
-                <li class="next">
-                  <a href="#">下一页»</a>
-                </li>
-              </ul>
-              <div><span>共10页&nbsp;</span></div>
-            </div>
-          </div>
+          <Pagination
+            :showPageNo="5"
+            :currentPage="options.pageNo"
+            :total="total"
+            :pageSize="options.pageSize"
+            @setCurrentPage="setCurrentPage"
+          /> 
         </div>
       </div>
     </div>
@@ -130,6 +108,7 @@
 <script>
 import { mapGetters } from 'vuex'
   import SearchSelector from './SearchSelector/SearchSelector'
+  import Pagination from '@/components/Pagination'
   
   export default {
     name: 'Search',
@@ -147,7 +126,7 @@ import { mapGetters } from 'vuex'
             "props": [],
 
             "pageNo": 1,
-            "pageSize": 10,
+            "pageSize": 5,
           }
       }
     },
@@ -159,7 +138,7 @@ import { mapGetters } from 'vuex'
       // ...mapState({
       //   goodsList:state => state.search.searchList.goodsList
       // })
-      ...mapGetters(['goodsList']),
+      ...mapGetters(['goodsList','total']),
 
       // 计算icon类名
       iconClass () {
@@ -182,7 +161,8 @@ import { mapGetters } from 'vuex'
       }
     },
     components: {
-      SearchSelector
+      SearchSelector,
+      Pagination
     },
     methods:{
         //更新options中的参数,组件跳组件不会重新创建组件对象
@@ -233,11 +213,13 @@ import { mapGetters } from 'vuex'
         setTrademark (trademark) {  // 品牌ID:品牌名称
           if (this.options.trademark===trademark) return
           this.options.trademark = trademark
+          //this.$set(this.options,'trademark',trademark)
           this.getSearchList()
         }, 
         //删除品牌条件
         deleteTrademark () {
           this.options.trademark = ''
+          this.$delete(this.options,trademark)
           this.getSearchList()
         },
         //添加属性值
@@ -271,7 +253,11 @@ import { mapGetters } from 'vuex'
           this.options.order = `${orderFlag}:${orderType}`
           this.getSearchList()
         },
-
+        //当前页码发生改变的事件回调
+        setCurrentPage(page){
+          this.options.pageNo = page
+          this.getSearchList()
+        }
     }
   }
 </script>

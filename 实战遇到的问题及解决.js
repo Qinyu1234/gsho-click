@@ -1,4 +1,5 @@
 const { startsWith } = require("core-js/core/string")
+const { options } = require("less")
 const { mock } = require("mockjs")
 
 1,路由重复跳转错误
@@ -85,6 +86,43 @@ const { mock } = require("mockjs")
         // watch   更新数据法请求
     // 将之合并
         //watch:immediate:true 初始化后就立即执行1次
+12,向响应式数据中心添加新属性
+    //响应式数据:data/state
+    //响应式数据对象:值为对象的响应式数据,响应式对象颞部的所有层次数据都是响应式:options / searchList
+
+    向响应式添加新属性:
+        非响应式
+            //options.xxx = 'abc' 
+            //delete options.xxx
+        响应式
+            // Vue.$set(this.options,'trademark',trademark) 添加
+            // this.$set(this.options,propertyName/index,trademark) 添加
+
+            // Vue.$delete(this.options,protyName/index) 删除
+            // this.$delete(this.options,'trademark') 删除
+13,自定义分页组件
+    1,基本流程
+        // 模板与样式 ---- 静态组件
+        // 设计props:传入的可变数据
+                // currentPage 当前页码
+                // total 总页码
+                // pageSize 每页的最大数量
+                // showPageNo 最大联系页码数
+        // 设计data:组件内部的可变数据
+                //myCurrentPage 内部保存的当前页码数
+        // 设计computed:给予props和data计算的数据
+                //totalPages 总页码
+                //start/end 连续页码的起始/结束
+    2,
+
+    //@setCurrentPage="setCurrentPage"
+14,优先级 //v-if v-for
+    //v-for>v-if
+    //如果需要对数组的每一项来判断的 ==> 提前定义计算属性
+
+
+
+
 
 方法,
     startsWith //字符串是否已xxx开始
@@ -105,7 +143,8 @@ const { mock } = require("mockjs")
             //this.$bus.$emit('xxx')
             //this.$bus.$on('xxx',()={ sss = ''})
         //注意,绑定后需要在Header组件销毁之前解绑事件监听beforeDestory
-
+    5,减少没必要的请求参数
+        //在发请求前(异步action中)删除空的参数
 
 
 git网页打开太慢
