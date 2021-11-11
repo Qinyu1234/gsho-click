@@ -120,7 +120,26 @@ const { mapGetters } = require("vuex")
 14,优先级 //v-if v-for
     //v-for>v-if
     //如果需要对数组的每一项来判断的 ==> 提前定义计算属性
-
+15,组件间通讯
+    //6种
+        props
+        自定义事件
+        全局事件总线
+        插槽
+        Vuex
+16,三种鼠标位置
+    1,clientX/clientY
+        cilentWidth
+        cilentHeight
+        盒子-内容+padding宽/高
+    2,pageX/pageY
+    3,offsetX/offsetY
+        offsetWidth
+        offsetHeight
+        盒子-内容+padding+border的宽/高
+        offsetLeft
+        offsetTop
+        元素偏移量-可以认为是决对定位left/top值
 
 
     mapGetters :computed
@@ -131,6 +150,8 @@ const { mapGetters } = require("vuex")
     startsWith //字符串是否已xxx开始
     let Str = "www.runoob.com"
     Str.startsWith("www") //true
+
+
 问题:
     1,Object.xxx报错,但数据样式完整显示
         //使用v-if处理一下
@@ -157,20 +178,22 @@ git网页打开太慢
     // 195.199.108.153 assets-cdn.github.com
 
 项目结构
-    -public
-        --css
-        --images
-        --indexe
-    -src
-        --components
-            --Headers.vue
-            --Footer.vue
-            --TypeNav.vue
-        --pages
-        --api
-        --store
-        --router
-        --app.vue
-        --main.js
+    //#region  
+        -public
+            --css
+            --images
+            --indexe
+        -src
+            --components
+                --Headers.vue
+                --Footer.vue
+                --TypeNav.vue
+            --pages
+            --api
+            --store
+            --router
+            --app.vue
+            --main.js
+    //#endregion
 
 

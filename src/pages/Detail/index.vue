@@ -7,31 +7,30 @@
     <section class="con">
       <!-- 导航路径区域 -->
       <div class="conPoin">
-        <span>手机、数码、通讯</span>
-        <span>手机</span>
-        <span>Apple苹果</span>
-        <span>iphone 6S系类</span>
+        <span>{{categoryView.category1Name}}</span>
+        <span>{{categoryView.category2Name}}</span>
+        <span>{{categoryView.category3Name}}</span>
       </div>
       <!-- 主要内容区域 -->
       <div class="mainCon">
         <!-- 左侧放大镜区域 -->
         <div class="previewWrap">
           <!--放大镜效果-->
-          <Zoom />
+          <Zoom :imgList="imgList"/>
           <!-- 小图列表 -->
-          <ImageList />
+          <ImageList :imgList="imgList"/>
         </div>
         <!-- 右侧选择区域布局 -->
         <div class="InfoWrap">
           <div class="goodsDetail">
-            <h3 class="InfoName">Apple iPhone 6s（A1700）64G玫瑰金色 移动通信电信4G手机</h3>
-            <p class="news">推荐选择下方[移动优惠购],手机套餐齐搞定,不用换号,每月还有花费返</p>
+            <h3 class="InfoName">{{skuInfo.skuName}}</h3>
+            <p class="news">{{skuInfo.skuDesc}}</p>
             <div class="priceArea">
               <div class="priceArea1">
                 <div class="title">价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格</div>
                 <div class="price">
                   <i>¥</i>
-                  <em>5299</em>
+                  <em>{{skuInfo.price}}</em>
                   <span>降价通知</span>
                 </div>
                 <div class="remark">
@@ -64,29 +63,17 @@
           <div class="choose">
             <div class="chooseArea">
               <div class="choosed"></div>
-              <dl>
-                <dt class="title">选择颜色</dt>
-                <dd changepirce="0" class="active">金色</dd>
-                <dd changepirce="40">银色</dd>
-                <dd changepirce="90">黑色</dd>
-              </dl>
-              <dl>
-                <dt class="title">内存容量</dt>
-                <dd changepirce="0" class="active">16G</dd>
-                <dd changepirce="300">64G</dd>
-                <dd changepirce="900">128G</dd>
-                <dd changepirce="1300">256G</dd>
-              </dl>
-              <dl>
-                <dt class="title">选择版本</dt>
-                <dd changepirce="0" class="active">公开版</dd>
-                <dd changepirce="-1000">移动版</dd>
-              </dl>
-              <dl>
-                <dt class="title">购买方式</dt>
-                <dd changepirce="0" class="active">官方标配</dd>
-                <dd changepirce="-240">优惠移动版</dd>
-                <dd changepirce="-390">电信优惠版</dd>
+              <dl v-for="spuSaleAttr in spuSaleAttrList" :key="spuSaleAttr.id">
+                <dt class="title">{{spuSaleAttr.saleAttrName}}</dt>
+                <dd changepirce="0" 
+                  v-for="spuSaleAttrValue in spuSaleAttr.spuSaleAttrValueList" 
+                  :key="spuSaleAttrValue.id" 
+                  @click="changeChecked(spuSaleAttrValue,spuSaleAttr.spuSaleAttrValueList)"
+                  :class="{active:spuSaleAttrValue.isChecked==='1'}"
+                  
+                >
+                  {{spuSaleAttrValue.saleAttrValueName}}
+                </dd>
               </dl>
             </div>
             <div class="cartWrap">
@@ -127,7 +114,7 @@
               <li>
                 <div class="list-wrap">
                   <div class="p-img">
-                    <img src="./images/part01.png" />
+                    <img src="/images/detail/part01.png" />
                   </div>
                   <div class="attr">Apple苹果iPhone 6s (A1699) </div>
                   <div class="price">
@@ -142,7 +129,7 @@
               <li>
                 <div class="list-wrap">
                   <div class="p-img">
-                    <img src="./images/part02.png" />
+                    <img src="/images/detail/part02.png" />
                   </div>
                   <div class="attr">
                     <em>Apple苹果iPhone 6s (A1699)</em>
@@ -161,7 +148,7 @@
               <li>
                 <div class="list-wrap">
                   <div class="p-img">
-                    <img src="./images/part03.png" />
+                    <img src="/images/detail/part03.png" />
                   </div>
                   <div class="attr">
                     <em>Apple苹果iPhone 6s (A1699)</em>
@@ -180,7 +167,7 @@
               <li>
                 <div class="list-wrap">
                   <div class="p-img">
-                    <img src="./images/part02.png" />
+                    <img src="/images/detail/part02.png" />
                   </div>
                   <div class="attr">
                     <em>Apple苹果iPhone 6s (A1699)</em>
@@ -199,7 +186,7 @@
               <li>
                 <div class="list-wrap">
                   <div class="p-img">
-                    <img src="./images/part03.png" />
+                    <img src="/images/detail/part03.png" />
                   </div>
                   <div class="attr">
                     <em>Apple苹果iPhone 6s (A1699)</em>
@@ -227,13 +214,13 @@
           <h4 class="kt">选择搭配</h4>
           <div class="good-suits">
             <div class="master">
-              <img src="./images/l-m01.png" />
+              <img src="/images/detail/l-m01.png" />
               <p>￥5299</p>
               <i>+</i>
             </div>
             <ul class="suits">
               <li class="suitsItem">
-                <img src="./images/dp01.png" />
+                <img src="/images/detail/dp01.png" />
                 <p>Feless费勒斯VR</p>
                 <label>
                   <input type="checkbox" value="39">
@@ -241,7 +228,7 @@
                 </label>
               </li>
               <li class="suitsItem">
-                <img src="./images/dp02.png" />
+                <img src="/images/detail/dp02.png" />
                 <p>Feless费勒斯VR</p>
                 <label>
                   <input type="checkbox" value="50">
@@ -249,7 +236,7 @@
                 </label>
               </li>
               <li class="suitsItem">
-                <img src="./images/dp03.png" />
+                <img src="/images/detail/dp03.png" />
                 <p>Feless费勒斯VR</p>
                 <label>
                   <input type="checkbox" value="59">
@@ -257,7 +244,7 @@
                 </label>
               </li>
               <li class="suitsItem">
-                <img src="./images/dp04.png" />
+                <img src="/images/detail/dp04.png" />
                 <p>Feless费勒斯VR</p>
                 <label>
                   <input type="checkbox" value="99">
@@ -322,9 +309,9 @@
                 <li>机身内存：64GB</li>
               </ul>
               <div class="intro-detail">
-                <img src="./images/intro01.png" />
-                <img src="./images/intro02.png" />
-                <img src="./images/intro03.png" />
+                <img src="/images/detail/intro01.png" />
+                <img src="/images/detail/intro02.png" />
+                <img src="/images/detail/intro03.png" />
               </div>
             </div>
             <div id="two" class="tab-pane">
@@ -348,8 +335,8 @@
 
 <script>
   import { mapGetters } from 'vuex'
-  import ImageList from './ImageList/ImageList'
-  import Zoom from './Zoom/Zoom'
+  import ImageList from './ImageList'
+  import Zoom from './Zoom'
 
   export default {
     name: 'Detail',
@@ -369,11 +356,23 @@
       this.getSkuDetailInfo()
     },
     computed:{
-      ...mapGetters(['categoryView','skuInfo','spuSaleAttrList'])
+      ...mapGetters(['categoryView','skuInfo','spuSaleAttrList']),
+      imgList(){
+        return this.skuInfo.skuImageList || []
+      }
     },
     methods:{
       getSkuDetailInfo(){
         this.$store.dispatch('getSkuDetailInfo',this.skuId)
+      },
+      //排他处理用户点击选择销售属性值
+      changeChecked(spuSaleAttrValue,spuSaleAttrValueList){
+        //第一步 所有属性值全部变白
+        spuSaleAttrValueList.forEach(item => {
+          item.isChecked = "0"
+        });
+        //第二部 点击的这个属性值变绿
+        spuSaleAttrValue.isChecked = "1"
       }
     }
 
