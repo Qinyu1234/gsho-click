@@ -8,7 +8,7 @@ axios二次封装
 import axios from "axios";
 import NProgress from "nprogress";
 import 'nprogress/nprogress.css'
-
+import store from '@/store'
 // 1,通配通用的基础路径和超时
 const service = axios.create({
     baseURL:'http://39.99.186.36/api', //基础路径
@@ -20,7 +20,11 @@ const service = axios.create({
 service.interceptors.request.use((config)=>{
     //显示请求进度条,发请求前
     NProgress.start()
-
+    let userTempId = store.state.user.userTempId
+    if(userTempId){
+        config.headers.userTempId = userTempId
+    }
+    console.log(config.headers)
     return config
 })
 
@@ -37,7 +41,7 @@ service.interceptors.response.use(
         NProgress.done()
 
         //统一错误提示
-        alert(error.message || '未知请求错误')
+        //alert(error.message || '未知请求错误')
         
         //throw error
         return Promise.reject(error)

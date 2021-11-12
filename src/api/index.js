@@ -33,5 +33,13 @@ export const reqSearchList = (searchParams)=>mockAjax({
     searchParams
 })
 //获取详情数据
-export const reqDetailInfo = (skuId)=>mockAjax('/detail/:skuId')
+export const reqDetailInfo = (skuId)=>mockAjax(`/detail/:skuId`)
 
+//添加更新购物车数据
+export const reqAddOrUpdataCart = (skuId,skuNum)=>mockAjax({
+    url:`/addOrUpdataCart/:skuId/:skuNum`,
+    method:'post'
+})
+
+//获取购物车列表/api/cart/cartList
+export const reqCartList = ()=> mockAjax('/cart/cartList')

@@ -78,12 +78,12 @@
             </div>
             <div class="cartWrap">
               <div class="controls">
-                <input autocomplete="off" class="itxt">
-                <a href="javascript:" class="plus">+</a>
-                <a href="javascript:" class="mins">-</a>
+                <input autocomplete="off" class="itxt" v-model="skuNum" @change="skuNum=skuNum>0?parseInt(skuNum):1">
+                <a href="javascript:" class="plus" @click="skuNum++">+</a>
+                <a href="javascript:" class="mins" @click="skuNum>0?skuNum--:0">-</a>
               </div>
               <div class="add">
-                <a href="javascript:">加入购物车</a>
+                <a href="javascript:" @click="addShopCart">加入购物车</a>
               </div>
             </div>
           </div>
@@ -346,7 +346,8 @@
     },
     data(){
       return{
-        skuId:''
+        skuId:'',
+        skuNum:0
       }
     },
     beforeMount(){
@@ -373,6 +374,19 @@
         });
         //第二部 点击的这个属性值变绿
         spuSaleAttrValue.isChecked = "1"
+      },
+      async addShopCart(){
+        let {skuId,skuNum} = this
+        try{
+          await this.$store.dispatch('addOrUpdataCart',{skuId,skuNum})
+          console.log('交易完成')
+          sessionStorage.setItem('SKUINFO_KEY',JSON.stringify(this.skuInfo))
+          this.$router.push('/addcartsuccess?skuNum=' +skuNum)
+        }catch(error){
+          alert(error.message)
+        }
+       
+        
       }
     }
 

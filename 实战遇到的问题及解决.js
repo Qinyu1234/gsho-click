@@ -140,8 +140,14 @@ const { mapGetters } = require("vuex")
         offsetLeft
         offsetTop
         元素偏移量-可以认为是决对定位left/top值
-
-
+17,跳转传参
+    1,如果是简单数据
+        路由传参
+    2,复杂数据,考虑存储手段
+        //localStoreage setItem getItem removeItem clear
+        //sessionStoreage setItem getItem removeItem clear
+            //localStoreage是永久储存
+            //sessionStoreage是临时数组,浏览器关闭就没了
     mapGetters :computed
     mapActions :methods
     mapState   :mounted  

@@ -19,9 +19,6 @@
             <img src="./images/goods1.png">
             <div class="item-msg">米家（MIJIA） 小米小白智能摄像机增强版 1080p高清360度全景拍摄AI增强</div>
           </li>
-          <li class="cart-list-con3">
-            <div class="item-txt">语音升级款</div>
-          </li>
           <li class="cart-list-con4">
             <span class="price">399.00</span>
           </li>
@@ -32,64 +29,6 @@
           </li>
           <li class="cart-list-con6">
             <span class="sum">399</span>
-          </li>
-          <li class="cart-list-con7">
-            <a href="#none" class="sindelet">删除</a>
-            <br>
-            <a href="#none">移到收藏</a>
-          </li>
-        </ul>
-
-        <ul class="cart-list">
-          <li class="cart-list-con1">
-            <input type="checkbox" name="chk_list" id="" value="">
-          </li>
-          <li class="cart-list-con2">
-            <img src="./images/goods2.png">
-            <div class="item-msg">华为（MIJIA） 华为metaPRO 30 浴霸4摄像 超清晰</div>
-          </li>
-          <li class="cart-list-con3">
-            <div class="item-txt">黑色版本</div>
-          </li>
-          <li class="cart-list-con4">
-            <span class="price">5622.00</span>
-          </li>
-          <li class="cart-list-con5">
-            <a href="javascript:void(0)" class="mins">-</a>
-            <input autocomplete="off" type="text" value="1" minnum="1" class="itxt">
-            <a href="javascript:void(0)" class="plus">+</a>
-          </li>
-          <li class="cart-list-con6">
-            <span class="sum">5622</span>
-          </li>
-          <li class="cart-list-con7">
-            <a href="#none" class="sindelet">删除</a>
-            <br>
-            <a href="#none">移到收藏</a>
-          </li>
-        </ul>
-
-        <ul class="cart-list">
-          <li class="cart-list-con1">
-            <input type="checkbox" name="chk_list" id="" value="">
-          </li>
-          <li class="cart-list-con2">
-            <img src="./images/goods3.png">
-            <div class="item-msg">iphone 11 max PRO 苹果四摄 超清晰 超费电 超及好用</div>
-          </li>
-          <li class="cart-list-con3">
-            <div class="item-txt">墨绿色</div>
-          </li>
-          <li class="cart-list-con4">
-            <span class="price">11399.00</span>
-          </li>
-          <li class="cart-list-con5">
-            <a href="javascript:void(0)" class="mins">-</a>
-            <input autocomplete="off" type="text" value="1" minnum="1" class="itxt">
-            <a href="javascript:void(0)" class="plus">+</a>
-          </li>
-          <li class="cart-list-con6">
-            <span class="sum">11399</span>
           </li>
           <li class="cart-list-con7">
             <a href="#none" class="sindelet">删除</a>
@@ -127,6 +66,14 @@
 <script>
   export default {
     name: 'ShopCart',
+    mounted(){
+      this.getCartList()
+    },
+    methods:{
+      getCartList(){
+        this.$store.dispatch('getCartList')
+      }
+    }
   }
 </script>
 
@@ -153,7 +100,8 @@
         }
 
         .cart-th1 {
-          width: 25%;
+          //width: 25%;
+          width: 15%;
 
           input {
             vertical-align: middle;
@@ -165,15 +113,28 @@
         }
 
         .cart-th2 {
-          width: 25%;
+          // width: 25%;
+          width: 35%;
         }
 
-        .cart-th3,
-        .cart-th4,
-        .cart-th5,
-        .cart-th6 {
-          width: 12.5%;
+        // .cart-th3,
+        // .cart-th4,
+        // .cart-th5,
+        // .cart-th6 {
+        //   width: 12.5%;
 
+        // }
+        .cart-th3{
+          width:10%
+        }
+        .cart-th4{
+          width:17%
+        }
+        .cart-th5{
+          width:10%
+        }
+        .cart-th6{
+          width:13%
         }
       }
 
@@ -191,11 +152,13 @@
           }
 
           .cart-list-con1 {
-            width: 4.1667%;
+            // width: 4.1667%;
+            width: 15%;
           }
 
           .cart-list-con2 {
-            width: 25%;
+            // width: 25%;
+            width: 35%;
 
             img {
               width: 82px;
@@ -210,22 +173,16 @@
               line-height: 18px;
             }
           }
-
-          .cart-list-con3 {
-            width: 20.8333%;
-
-            .item-txt {
-              text-align: center;
-            }
-          }
-
           .cart-list-con4 {
-            width: 12.5%;
+            //width: 12.5%;
+            width: 10%;
+            
 
           }
 
           .cart-list-con5 {
-            width: 12.5%;
+            // width: 12.5%;
+            width: 17%;
 
             .mins {
               border: 1px solid #ddd;
@@ -258,7 +215,9 @@
           }
 
           .cart-list-con6 {
-            width: 12.5%;
+            // width: 12.5%;
+            width: 10%;
+            
 
             .sum {
               font-size: 16px;
@@ -266,7 +225,8 @@
           }
 
           .cart-list-con7 {
-            width: 12.5%;
+            width: 13%;
+            // width: 12.5%;
 
             a {
               color: #666;

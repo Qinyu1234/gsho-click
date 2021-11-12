@@ -1,6 +1,5 @@
 /*
     管理首页相关数据的vuex子模块
-    
 */
 import {reqDetailInfo} from "@/api";
 const state = {
