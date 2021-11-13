@@ -70,7 +70,6 @@
                   :key="spuSaleAttrValue.id" 
                   @click="changeChecked(spuSaleAttrValue,spuSaleAttr.spuSaleAttrValueList)"
                   :class="{active:spuSaleAttrValue.isChecked==='1'}"
-                  
                 >
                   {{spuSaleAttrValue.saleAttrValueName}}
                 </dd>
@@ -385,8 +384,6 @@
         }catch(error){
           alert(error.message)
         }
-       
-        
       }
     }
 
