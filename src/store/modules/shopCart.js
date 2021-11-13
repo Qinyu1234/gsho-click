@@ -31,6 +31,16 @@ const actions = {
             console.log('getCartList---',JSON.stringify(result.data))
             commit('RECEIVE_SHOPCARTLIST',result.data)
         }
+    },
+    updateCartChecked({commit},{skuId,isChecked}){},
+    async updateCartCheckedAll({commit,dispatch,state},isChecked){
+        let promises = []
+        state.shopCartList.forEach(item => {
+            if(item.isChecked === isChecked) return
+            let promise = dispatch('updateCartChecked',{skuid:item.skuId,isChecked})
+            promises.push(promise)
+        });
+        return Promise.all(promises)
     }
 }
 const getters = {

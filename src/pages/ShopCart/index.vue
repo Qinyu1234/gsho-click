@@ -13,7 +13,7 @@
       <div class="cart-body">
         <ul class="cart-list" v-for="shopCart in shopCartList" :key="shopCart.id">
           <li class="cart-list-con1">
-            <input type="checkbox" :checked="shopCart.isChecked" name="chk_list">
+            <input type="checkbox" :checked="shopCart.isChecked" @click="updateOne(shopCart)" name="chk_list">
           </li>
           <li class="cart-list-con2">
             <img :src="shopCart.imgUrl">
@@ -94,8 +94,8 @@ import { mapState } from 'vuex'
         }catch(error){
           console.log(error.message)
         }
-        
-      }
+      },
+      updateOne(shopCart){},
     },
     computed:{
      // mapState使用数组, 名字必须相同,数据只能是总的state
@@ -125,8 +125,12 @@ import { mapState } from 'vuex'
         get(){
           return this.shopCartList.every(item =>item.isChecked)
         },
-        set(){
-
+        set(val){
+          try {
+            const result = this.$store.dispatch('updateCartCheckedAll',val?1:0)
+          } catch (error) {
+            console.log(error.message)
+          }
         }
       }
     }

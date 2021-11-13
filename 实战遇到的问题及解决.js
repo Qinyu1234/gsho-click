@@ -146,7 +146,13 @@
     mapGetters :computed
     mapActions :methods
     mapState   :mounted  
-
+18,Promise.all
+    是一个方法(函数)
+    //参数:一个promise对象的数组
+    //返回值:一个新的promise对象
+    //新的promise对象的状态是成功还是失败
+        //如果promise对象的数组中有一个是失败,那么状态就是失败,原因就是第一个失败的promise的原因
+        //如果promise对象的数组中没有一个是失败,那么状态就是成功,成功结果就是所有promise成功的结果组成的数组
 方法,
     startsWith //字符串是否已xxx开始
     let Str = "www.runoob.com"
