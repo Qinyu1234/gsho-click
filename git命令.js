@@ -40,3 +40,14 @@
     // git checkout -b atguigu origin/atguigu 根据远程分支创建本地分支
     // git chechout aaa 切换分支aaa
     // git push -u origin atguigu
+
+    冲突:
+    方法1
+        //git stash save "save message"
+            //git stash list  ：查看stash了哪些存储
+        //git pull origin master
+        //git stash pop
+    方法2
+        //放弃本地代码,退回上一版本,再拉取代码到本地。
+        // git reset --hard
+        // git pull origin master

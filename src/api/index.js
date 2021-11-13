@@ -38,6 +38,9 @@ export const reqaddToCart_ajax = (skuId,skuNum)=>ajax({
     method:'post'
 })
 
+//Mock.mock('/mock/detail/:skuId',{code:200,data:detail})
+export const reqDetailInfo = (skuId)=> mockAjax('/detail/:skuId')
+
 
 //添加更新购物车数据
 export const reqAddOrUpdataCart = (skuId,skuNum)=>mockAjax({
@@ -47,3 +50,5 @@ export const reqAddOrUpdataCart = (skuId,skuNum)=>mockAjax({
 
 //获取购物车列表/api/cart/cartList
 export const reqCartList = ()=> mockAjax('/cart/cartList')
+
+

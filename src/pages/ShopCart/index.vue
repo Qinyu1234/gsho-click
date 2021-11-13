@@ -11,24 +11,24 @@
         <div class="cart-th6">操作</div>
       </div>
       <div class="cart-body">
-        <ul class="cart-list">
+        <ul class="cart-list" v-for="shopCart in shopCartList" :key="shopCart.id">
           <li class="cart-list-con1">
-            <input type="checkbox" name="chk_list">
+            <input type="checkbox" :checked="shopCart.isChecked" name="chk_list">
           </li>
           <li class="cart-list-con2">
-            <img src="./images/goods1.png">
-            <div class="item-msg">米家（MIJIA） 小米小白智能摄像机增强版 1080p高清360度全景拍摄AI增强</div>
+            <img :src="shopCart.imgUrl">
+            <div class="item-msg">{{shopCart.skuName}}</div>
           </li>
           <li class="cart-list-con4">
-            <span class="price">399.00</span>
+            <span class="price">{{shopCart.skuPrice}}</span>
           </li>
           <li class="cart-list-con5">
-            <a href="javascript:void(0)" class="mins">-</a>
-            <input autocomplete="off" type="text" value="1" minnum="1" class="itxt">
-            <a href="javascript:void(0)" class="plus">+</a>
+            <a href="javascript:void(0)" class="mins" @click="changeCartNum(shopCart,-1,true)">-</a>
+            <input autocomplete="off" type="text" @change="changeCartNum(shopCart,$event.target.value*1,false)" :value="shopCart.skuNum" minnum="1" class="itxt">
+            <a href="javascript:void(0)" class="plus" @click="changeCartNum(shopCart,+1,true)">+</a>
           </li>
           <li class="cart-list-con6">
-            <span class="sum">399</span>
+            <span class="sum">{{shopCart.skuPrice * shopCart.skuNum}}</span>
           </li>
           <li class="cart-list-con7">
             <a href="#none" class="sindelet">删除</a>
@@ -40,7 +40,7 @@
     </div>
     <div class="cart-tool">
       <div class="select-all">
-        <input class="chooseAll" type="checkbox">
+        <input class="chooseAll" v-model="isAllCheck" type="checkbox">
         <span>全选</span>
       </div>
       <div class="option">
@@ -50,10 +50,10 @@
       </div>
       <div class="money-box">
         <div class="chosed">已选择
-          <span>0</span>件商品</div>
+          <span>{{checkedNum}}</span> 件商品</div>
         <div class="sumprice">
           <em>总价（不含运费） ：</em>
-          <i class="summoney">0</i>
+          <i class="summoney">{{allMoney}}</i>
         </div>
         <div class="sumbtn">
           <a class="sum-btn" href="###" target="_blank">结算</a>
@@ -64,6 +64,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
   export default {
     name: 'ShopCart',
     mounted(){
@@ -72,6 +73,61 @@
     methods:{
       getCartList(){
         this.$store.dispatch('getCartList')
+      },
+      async changeCartNum(shopCart,disNum,flag){
+        if(!flag){
+          if(disNum > 0){
+            disNum = disNum - shopCart.skuNum
+          }else{
+            disNum = 1 - shopCart.skuNum
+          }
+        }else{
+          if(shopCart.skuNum + disNum <= 0){
+            disNum = 1 - shopCart.skuNum
+          }
+        }
+        try{
+          //把传递过来的数据全部转化为正确的变化的量后发请求
+          await this.$store.dispatch('addOrUpdataCart',{skuId:shopCart.skuId,skuNum:disNum})
+          console.log('shopCart---','修改数据成功')
+          this.getCartList()
+        }catch(error){
+          console.log(error.message)
+        }
+        
+      }
+    },
+    computed:{
+     // mapState使用数组, 名字必须相同,数据只能是总的state
+      ...mapState({
+        shopCartList:state => state.shopCart.shopCartList
+      }),
+      //选中几件商品
+      checkedNum(){
+        return this.shopCartList.reduce((prev,item) =>{
+          if(item.isChecked){
+            prev += item.skuNum
+          }
+          return prev
+        },0)
+      },
+      //总价
+      allMoney(){
+         return this.shopCartList.reduce((prev,item) =>{
+          if(item.isChecked){
+            prev += item.skuPrice * item.skuNum
+          }
+          return prev
+        },0)
+      },
+      //全选
+      isAllCheck:{
+        get(){
+          return this.shopCartList.every(item =>item.isChecked)
+        },
+        set(){
+
+        }
       }
     }
   }

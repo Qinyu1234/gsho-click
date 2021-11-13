@@ -1,8 +1,3 @@
-const { startsWith } = require("core-js/core/string")
-const { options } = require("less")
-const { mock } = require("mockjs")
-const { mapGetters } = require("vuex")
-
 1,路由重复跳转错误
     相同参数&相同的路由,重复点击会提示
         //vue-router.esm.js:2066 Uncaught (in promise) NavigationDuplicated: 
@@ -176,15 +171,14 @@ const { mapGetters } = require("vuex")
     5,减少没必要的请求参数
         //在发请求前(异步action中)删除空的参数
 
-
-git网页打开太慢
+//#region git网页打开太慢
     // #speed up git
     // 140.82.113.3 github.com
     // 199.232.69.194 github.global-ssl.fastly.Net
     // 195.199.108.153 assets-cdn.github.com
+//#endregion
 
-项目结构
-    //#region  
+//#region 项目结构
         -public
             --css
             --images
