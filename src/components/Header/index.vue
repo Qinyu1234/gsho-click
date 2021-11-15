@@ -5,10 +5,12 @@
       <div class="container">
         <div class="loginList">
           <p>尚品汇欢迎您！</p>
-          <p>
+          <p v-if="$store.state.user.userInfo.succ">
+            <a href="javascript:;'">{{$store.state.user.userInfo.succ.name}}</a>
+            <a href="javascript:;'" @click="logout" class="register">退出登录</a>
+          </p>
+          <p v-else>
             <span>请</span>
-            <!-- <a href="###">登录</a>
-            <a href="###" class="register">免费注册</a> -->
             <router-link to="/login">登录</router-link>
             <router-link class="register" to="/register">免费注册</router-link>
           </p>
@@ -94,6 +96,9 @@ export default {
       // //方法2:catch处理错误promise
       // this.$router.push(location).catch(()=>{})
     },
+    logout(){
+      //调退出登录的接口
+    }
   },
   mounted() {
     // 给总线绑定自定义事件监听clearKeyword
