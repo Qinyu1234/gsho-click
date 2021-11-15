@@ -24,6 +24,10 @@ service.interceptors.request.use((config)=>{
     if(userTempId){
         config.headers.userTempId = userTempId
     }
+    let token = store.state.user.token
+    if(token){
+        config.headers.token = token
+    }
     console.log(config.headers)
     return config
 })

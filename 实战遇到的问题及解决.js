@@ -1,3 +1,5 @@
+const { default: router } = require("@/router")
+
 1,路由重复跳转错误
     相同参数&相同的路由,重复点击会提示
         //vue-router.esm.js:2066 Uncaught (in promise) NavigationDuplicated: 
@@ -153,6 +155,50 @@
     //新的promise对象的状态是成功还是失败
         //如果promise对象的数组中有一个是失败,那么状态就是失败,原因就是第一个失败的promise的原因
         //如果promise对象的数组中没有一个是失败,那么状态就是成功,成功结果就是所有promise成功的结果组成的数组
+19,target="_blank"
+    跳转新页面的标签属性
+20,导航守卫
+    任意路由
+        全局前置守卫
+            router.beforeEach((to, from, next) => {
+                if (to.name !== 'Login' && !isAuthenticated) next({ name: 'Login' })
+                // 如果用户未能验证身份，则 `next` 会被调用两次
+
+                //to:即将进入的路由目标对象
+                //from当前导航正要离开的路由
+                //next() 
+                    //没有参数,放行 
+                    //next(false) 不放行
+                    //next('/') 或 next({path:'/'})跳转到一个不通的地址,当前导航被中断,然后进行一个新的导航
+                next()
+            })
+        全局解析守卫(基本不用)
+        全局后置守卫(基本不用)
+        //导航守卫里设置
+        router.beforeEach((to, from, next) => {
+            this.$router.push('login?redirect='+to.patch)
+            next()
+        })
+        //login里跳转
+        let redirect = this.$route.query.redirect  || '/'
+        this.$router.push(redirect)
+
+    路由独享守卫
+21,滚动行为 //跳转到页面的位置    
+    scrollBehavior (to, from, savedPosition) {
+        // return 期望滚动到哪个的位置
+        return { x: 0, y: 0 }
+    }
+21,自动登录
+    登录返回的是token,但用户信息还没有
+    自动登录,是不需要请求,根据登录后的token信息,自动获取用户信息,就可以展示
+    token校验,还可以验证token是不是过期
+
+
+
+
+
+
 方法,
     startsWith //字符串是否已xxx开始
     let Str = "www.runoob.com"

@@ -3,6 +3,7 @@
 //第二部:在调用uuid创建新的,并且春触到localStorage中
 import { v4 as uuidv4 } from 'uuid';
 
+let TOKEN_KEY = 'TOKEN_KEY'
 
 function getUserTempId(){
     let uuidTempId = localStorage.getItem('USERTEMPID_KEY')
@@ -12,7 +13,18 @@ function getUserTempId(){
     }
     return uuidTempId
 }
-
+function setToken(token){
+    localStorage.setItem(TOKEN_KEY,token)
+}
+function getToken(){
+    return localStorage.getItem(TOKEN_KEY)
+}
+function removeToken(){
+    localStorage.removeItem(TOKEN_KEY)
+}
 export {
-    getUserTempId
+    getUserTempId,
+    setToken,
+    getToken,
+    removeToken
 }

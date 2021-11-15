@@ -51,4 +51,24 @@ export const reqAddOrUpdataCart = (skuId,skuNum)=>mockAjax({
 //获取购物车列表/api/cart/cartList
 export const reqCartList = ()=> mockAjax('/cart/cartList')
 
+//注册:/api/user/passport/register post
+export const reqRegister = (userInfo)=> mockAjax({
+    url:'/register',
+    method:'post',
+    data:userInfo
+})
+
+//登录 /api/user/passport/login
+export const reqLogin = (userInfo) => mockAjax({
+    url:'/login',
+    method:'post',
+    data:userInfo
+})
+
+export const reqLogin_ajax = (userInfo) => ajax({
+    url:'/login',
+    method:'post',
+    data:userInfo
+})
+
 
