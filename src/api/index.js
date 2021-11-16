@@ -71,4 +71,10 @@ export const reqLogin_ajax = (userInfo) => ajax({
     data:userInfo
 })
 
+//获取订单交易页信息 /api/order/auth/trade
 
+export const reqTrade = ()=>mockAjax(`/order/auth/trade`)
+
+//获取我的订单列表 /api/order/auth/{page}/{limit}
+
+export const reqPage = (page,limit)=>mockAjax(`/order/auth/:page/:limit`)

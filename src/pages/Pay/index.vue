@@ -31,8 +31,8 @@
         </div>
         <div class="step-cont">
           <ul class="payType">
-            <li><img src="./images/pay2.jpg"></li>
-            <li><img src="./images/pay3.jpg"></li>
+            <li><img src="/images/pay/pay2.jpg"></li>
+            <li><img src="/images/pay/pay3.jpg"></li>
           </ul>
 
         </div>
@@ -44,19 +44,19 @@
           </div>
           <div class="step-cont">
             <ul class="payType">
-              <li><img src="./images/pay10.jpg"></li>
-              <li><img src="./images/pay11.jpg"></li>
-              <li><img src="./images/pay12.jpg"></li>
-              <li><img src="./images/pay13.jpg"></li>
-              <li><img src="./images/pay14.jpg"></li>
-              <li><img src="./images/pay15.jpg"></li>
-              <li><img src="./images/pay16.jpg"></li>
-              <li><img src="./images/pay17.jpg"></li>
-              <li><img src="./images/pay18.jpg"></li>
-              <li><img src="./images/pay19.jpg"></li>
-              <li><img src="./images/pay20.jpg"></li>
-              <li><img src="./images/pay21.jpg"></li>
-              <li><img src="./images/pay22.jpg"></li>
+              <li><img src="/images/pay/pay10.jpg"></li>
+              <li><img src="/images/pay/pay11.jpg"></li>
+              <li><img src="/images/pay/pay12.jpg"></li>
+              <li><img src="/images/pay/pay13.jpg"></li>
+              <li><img src="/images/pay/pay14.jpg"></li>
+              <li><img src="/images/pay/pay15.jpg"></li>
+              <li><img src="/images/pay/pay16.jpg"></li>
+              <li><img src="/images/pay/pay17.jpg"></li>
+              <li><img src="/images/pay/pay18.jpg"></li>
+              <li><img src="/images/pay/pay19.jpg"></li>
+              <li><img src="/images/pay/pay20.jpg"></li>
+              <li><img src="/images/pay/pay21.jpg"></li>
+              <li><img src="/images/pay/pay22.jpg"></li>
 
             </ul>
           </div>
@@ -65,14 +65,20 @@
         <div class="hr"></div>
 
         <div class="submit">
-          <router-link class="btn" to="/paysuccess">立即支付</router-link>
+          <!-- <router-link class="btn" to="/paysuccess">立即支付</router-link> -->
+          <a href="#" class="btn" @click="pay">立即支付</a>
+          <!-- <template>
+            <el-button  type="text" _blank @click="open">立即支付</el-button>
+          </template> -->
         </div>
         <div class="otherpay">
           <div class="step-tit">
             <h5>其他支付方式</h5>
           </div>
           <div class="step-cont">
-            <span><a href="weixinpay.html" target="_blank">微信支付</a></span>
+            <span>
+              <a href="weixinpay.html" target="_blank">微信支付</a>  
+            </span>
             <span>中国银联</span>
           </div>
         </div>
@@ -84,6 +90,24 @@
 <script>
   export default {
     name: 'Pay',
+    methods:{
+      pay() {
+        this.$alert('这是一段内容', '请使用微信扫码支付', {
+          showCancelButton:true,
+          cancelButtonText:'支付遇到问题',
+          confirmButtonText: '我已成功支付',
+          center:true,
+          distinguishCancelAndClose:true,
+          showClose:false,
+          callback: action => {
+            this.$message({
+              type: 'info',
+              message: `action: ${ action }`
+            });
+          }
+        });
+      }
+    }
   }
 </script>
 
@@ -123,7 +147,7 @@
             width: 30px;
             height: 30px;
             display: inline-block;
-            background: url(./images/icon.png) no-repeat 0 0;
+            background: url(/images/pay/icon.png) no-repeat 0 0;
           }
 
           .success-info {

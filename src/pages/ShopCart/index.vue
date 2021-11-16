@@ -56,7 +56,8 @@
           <i class="summoney">{{allMoney}}</i>
         </div>
         <div class="sumbtn">
-          <a class="sum-btn" href="###" target="_blank">结算</a>
+          <!-- <a class="sum-btn" href="###" target="_blank" >结算</a> -->
+          <router-link class="sum-btn" target="_blank" to="/trade">结算</router-link>
         </div>
       </div>
     </div>
@@ -350,7 +351,7 @@ import { mapState } from 'vuex'
         .sumbtn {
           float: right;
 
-          a {
+          .sum-btn{
             display: block;
             position: relative;
             width: 96px;

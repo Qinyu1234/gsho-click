@@ -67,7 +67,7 @@
                 <div class="list-wrap">
                   <div class="p-img">
                     <router-link target="_blank" :to="`/detail/${goods.id}`">
-                      <img src="./images/mobile01.png" />
+                      <img src="/images/search/mobile01.png" />
                     </router-link>
                   </div>
                   <div class="price">

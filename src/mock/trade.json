@@ -1,0 +1,45 @@
+{
+    "totalAmount": 23996,
+    "userAddressList": [
+        {
+            "id": 1,
+            "userAddress": "北京市昌平区1",
+            "userId": 2,
+            "consignee": "admin1",
+            "phoneNum": "15011111111",
+            "isDefault": "1"
+        },
+        {
+            "id": 2,
+            "userAddress": "北京市昌平区2",
+            "userId": 2,
+            "consignee": "admin2",
+            "phoneNum": "15022222222",
+            "isDefault": "0"
+        }
+    ],
+    "tradeNo": "1b23c1efc8144bfc83e51807f4e71d3a",
+    "totalNum": 1,
+    "detailArrayList": [
+        {
+            "id": 1,
+            "orderId": null,
+            "skuId": 4,
+            "skuName": "Apple iPhone 11 移动联通电信4G手机 双卡双待",
+            "imgUrl": "/images/detail/part01.png",
+            "orderPrice": 5999,
+            "skuNum": 2,
+            "hasStock": null
+        },
+        {
+            "id": 2,
+            "orderId": null,
+            "skuId": 4,
+            "skuName": "Apple iPhone X",
+            "imgUrl": "/images/detail/part02.png",
+            "orderPrice": 7999,
+            "skuNum": 3,
+            "hasStock": null
+        }
+    ]
+}

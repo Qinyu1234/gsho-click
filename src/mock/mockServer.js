@@ -11,6 +11,8 @@ import search  from './search.json'
 import detail  from './detail.json'
 import cartList  from './cartList.json'
 import login  from './login.json'
+import page  from './page.json'
+import trade  from './trade.json'
 
 //mock不需要暴露对象
 
@@ -24,3 +26,7 @@ Mock.mock(`/mock/addOrUpdataCart/:skuId/:skuNum`,{code:200,data:null})
 Mock.mock(`/mock/cart/cartList`,{code:200,data:cartList})
 Mock.mock(`/mock/register`,{code:200,data:null})
 Mock.mock(`/mock/login`,{code:200,data:login})
+Mock.mock(`/mock/login`,{code:200,data:login})
+Mock.mock(`/mock/order/auth/trade`,{code:200,data:trade})
+
+Mock.mock(`/mock/order/auth/:page/:limit`,{code:200,data:page})
