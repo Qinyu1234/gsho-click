@@ -88,25 +88,57 @@
 </template>
 
 <script>
+import QRCode from 'qrcode'
   export default {
     name: 'Pay',
     methods:{
-      pay() {
-        this.$alert('这是一段内容', '请使用微信扫码支付', {
-          showCancelButton:true,
-          cancelButtonText:'支付遇到问题',
-          confirmButtonText: '我已成功支付',
-          center:true,
-          distinguishCancelAndClose:true,
-          showClose:false,
-          callback: action => {
-            this.$message({
-              type: 'info',
-              message: `action: ${ action }`
-            });
+      async pay() {
+        //debugger
+        // 生成二维码
+          try {
+            const imgUrl = await QRCode.toDataURL('123')
+            console.log(imgUrl)
+            //成功二维码成功后弹框
+            this.$alert(`<img src="${imgUrl}"/>`, '请使用微信扫码支付', {
+              showCancelButton:true,
+              cancelButtonText:'支付遇到问题',
+              confirmButtonText: '我已成功支付',
+              dangerouslyUseHTMLString:true,
+              center:true,
+              // distinguishCancelAndClose:true,
+              showClose:false,
+              beforeClose:(action,instance,done)=>{
+                if(action ==='confirm'){
+                  //点击确认按钮的逻辑
+                  //判断交易状态是否成功
+                  //提示需要支付
+                }else if(action === 'cancel'){
+                  //点击取消按钮的逻辑
+                }
+              },
+            }).then() //点击确认按钮操作
+            .catch();//点击确认按钮操作
+
+            //设置定时器轮训查看是否支付成功
+            if(!this.time){
+              this.time = setInterval(()=>{
+                //发请求轮训
+
+                if(true){
+                  //1,跳转支付成功页面 2.清除定时器 3.关闭消息盒子 4,存储支付成功状态
+                  clearInterval(this.time)
+                  this.time=null
+                  //关闭消息盒子
+                  this.$msgbox.close()
+                }
+              },1000)
+            }
+
+          } catch (err) {
+            console.error(err)
           }
-        });
-      }
+      },
+      
     }
   }
 </script>
