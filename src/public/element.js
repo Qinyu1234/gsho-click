@@ -1,7 +1,8 @@
 import Vue from 'vue';
-import { MessageBox,Message, } from 'element-ui';
+import { MessageBox,Message,Pagination } from 'element-ui';
 Vue.component(MessageBox.name,MessageBox)
 Vue.component(Message.name,Message)
+Vue.component(Pagination.name,Pagination)
 
 Vue.prototype.$msgbox = MessageBox;
 Vue.prototype.$alert = MessageBox.alert;
