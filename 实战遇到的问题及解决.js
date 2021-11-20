@@ -184,6 +184,15 @@ const { default: router } = require("@/router")
         this.$router.push(redirect)
 
     路由独享守卫
+        路由内:
+        beforeEnter((to, from, next) => {
+            let token = store.state.user.token
+            if(token){
+                next('/')
+            }else{
+                next()
+            }
+        })
 21,滚动行为 //跳转到页面的位置    
     scrollBehavior (to, from, savedPosition) {
         // return 期望滚动到哪个的位置
@@ -193,10 +202,50 @@ const { default: router } = require("@/router")
     登录返回的是token,但用户信息还没有
     自动登录,是不需要请求,根据登录后的token信息,自动获取用户信息,就可以展示
     token校验,还可以验证token是不是过期
+22,重定向路由
+    //第一种
+    children:[
+        {
+            path:'',
+            redirect:'myorder',
+        }
+    ]
+    //第二种
+    redirect:'/center/myorder',
+23,路由类设置
+    //router-link-active 被点击的数据
+24,图片懒加载
+    //1,安装 npm install vue-lazyload
+    //2,引入并配置 
+        //import VueLazyload from 'vue-lazyload'
+        // 在图片界面没有进入到可视范围前不加载, 在没有得到图片前先显示loading图片
+        //Vue.use(VueLazyload, { // 内部自定义了一个指令lazy
+        //    loading,  // 指定未加载得到图片之前的loading图片
+        //})
+    //3,使用
+        //<img v-lazy="goods.defaultImg" />
+25,路由懒加载
+    //import from 是同步引入的
+    //不能动态引入
+    //他是把所有的组件全部引入完成才加载下面代码,webpack打包时会吧所有引入打包一起成为一个大的文件
+    //比较慢
 
+    //import函数可以让路有组件单独打包 还可以动态引入
+    const Home = ()=>import('../pages/Home')
+    当路由被访问是,上面的函数才会被调用
+26,表单验证插件vee-validate @2.2.15
+    //1,安装引入
+        //vee-validate @2.2.15 
 
-
-
+        // import Vue from 'vue'
+        // import VeeValidate from 'vee-validate'
+        // Vue.use(VeeValidate)
+    //2,基本使用
+    <input 
+        v-validate="{required:true,regex:/^1\d{10}$/}"
+        :class="{invalid:error.has('phone')}"
+    >
+    <span class="error-msg">{{error.first('phone')}}</span>
 
 
 方法,

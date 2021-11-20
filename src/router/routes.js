@@ -7,6 +7,9 @@ import AddCartSuccess from "@/pages/AddCartSuccess";
 import ShopCart from "@/pages/ShopCart";
 import Trade from "@/pages/Trade";
 import Pay from "@/pages/Pay";
+import Center from "@/pages/Center";
+import MyOrder from "@/pages/Center/MyOrder";
+import GroupOrder from "@/pages/Center/GroupOrder";
 
 export default [
     {
@@ -52,11 +55,42 @@ export default [
     {
         name:'trade',
         path:'/trade',
-        component:Trade
+        component:Trade,
+        //只有从购物车才能进入支付页面
+        beforeEnter:(to,from,next)=>{
+            if(from.path === '/shopcart'){
+                next()
+            }else{
+                next('/')
+            }
+        }
     },
     {
         name:'pay',
-        path:'/pay/',
+        path:'/pay',
         component:Pay
+    },
+    {
+        name:'center',
+        path:'/center',
+        component:Center,
+        redirect:'/center/myorder',
+        children:[
+            {
+                name:'myorder',
+                path:'myorder',
+                component:MyOrder
+            },
+            {
+                name:'grouporder',
+                path:'grouporder',
+                component:GroupOrder
+            },
+            {
+                path:'',
+                redirect:'myorder',
+            }
+        ]
+        
     },
 ]
