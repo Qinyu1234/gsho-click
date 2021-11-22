@@ -41,6 +41,11 @@
     // git chechout aaa 切换分支aaa
     // git push -u origin atguigu
 
+//合并分支
+    //git checkout main 切换到合并到的分支
+    //git merge branch_qinyu 将xx分支合并到现在的分支上
+    //git push 提交
+
     冲突:
     方法1
         //git stash save "save message"
